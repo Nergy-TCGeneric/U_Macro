@@ -9,10 +9,11 @@ using System.Windows.Forms;
 
 namespace Hook
 {
-    class KeyboardHook : Hook
+    public class KeyboardHook : Hook
     {
         private static int hookHandle = 0;
         private static HookProc callBackDelegate;
+        private static KeyboardHookEventArgs latestEvent;
         private const int WM_KEYDOWN = 0x0100;
 
         public static event EventHandler<KeyboardHookEventArgs> keyboardEvent = delegate { };
@@ -51,7 +52,17 @@ namespace Hook
                 KeyboardHookEventArgs args = new KeyboardHookEventArgs();
                 args.KeyCode = keyCode;
                 args.invokedTime = DateTime.Now;
-                keyboardEvent(null, args);
+
+                if(latestEvent == null) {
+                    latestEvent = args;
+                }
+
+                TimeSpan diff = args.invokedTime.Subtract(latestEvent.invokedTime);
+                if (diff.CompareTo(new TimeSpan(0, 0, 0, 0, 30)) >= 0)
+                {
+                    keyboardEvent(null, args);
+                    latestEvent = args;
+                }
             }
             return CallNextHookEx(hookHandle, nCode, wParam, IParam);
         }

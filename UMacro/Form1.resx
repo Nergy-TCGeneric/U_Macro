@@ -306,54 +306,6 @@
   <data name="&gt;&gt;InsertMacroProcedure.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;individualMethod.Name" xml:space="preserve">
-    <value>individualMethod</value>
-  </data>
-  <data name="&gt;&gt;individualMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;individualMethod.Parent" xml:space="preserve">
-    <value>recordMethodGroup</value>
-  </data>
-  <data name="&gt;&gt;individualMethod.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;continuousMethod.Name" xml:space="preserve">
-    <value>continuousMethod</value>
-  </data>
-  <data name="&gt;&gt;continuousMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;continuousMethod.Parent" xml:space="preserve">
-    <value>recordMethodGroup</value>
-  </data>
-  <data name="&gt;&gt;continuousMethod.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="recordMethodGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 99</value>
-  </data>
-  <data name="recordMethodGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 108</value>
-  </data>
-  <data name="recordMethodGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="recordMethodGroup.Text" xml:space="preserve">
-    <value>Recording method</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.Name" xml:space="preserve">
-    <value>recordMethodGroup</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="individualMethod.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -409,6 +361,30 @@
     <value>recordMethodGroup</value>
   </data>
   <data name="&gt;&gt;continuousMethod.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="recordMethodGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>364, 99</value>
+  </data>
+  <data name="recordMethodGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 108</value>
+  </data>
+  <data name="recordMethodGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="recordMethodGroup.Text" xml:space="preserve">
+    <value>Recording method</value>
+  </data>
+  <data name="&gt;&gt;recordMethodGroup.Name" xml:space="preserve">
+    <value>recordMethodGroup</value>
+  </data>
+  <data name="&gt;&gt;recordMethodGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;recordMethodGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;recordMethodGroup.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="playBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">

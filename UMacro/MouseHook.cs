@@ -4,29 +4,31 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Hook
 {
-    class MouseHook : Hook
+    public class MouseHook : Hook
     {
         private static int hookHandle = 0;
         private static HookProc callBackDelegate;
+        private static MouseHookEventArgs latestEvent;
 
         public static event EventHandler<MouseHookEventArgs> mouseEvent = delegate { };
 
         public class MouseHookEventArgs : EventArgs
         {
             public MouseMessages type;
-            public long X;
-            public long Y;
+            public int X;
+            public int Y;
             public DateTime invokedTime;
         }
 
         [StructLayout(LayoutKind.Sequential)]
         private struct POINT
         {
-            public long x;
-            public long y;
+            public int x;
+            public int y;
         }
         [StructLayout(LayoutKind.Sequential)]
         private struct MouseHookConstruct
@@ -57,9 +59,8 @@ namespace Hook
         {
             if (callBackDelegate != null)
                 throw new InvalidOperationException("Hook has not been initalized properly!");
-                callBackDelegate = new HookProc(CallBack);
-                if (hookHandle != 0)
-                {
+            callBackDelegate = new HookProc(CallBack);
+                if (hookHandle != 0) {
                     return;
                 }
             hookHandle = SetWindowsHookEx(WH_MOUSE_LL, callBackDelegate, IntPtr.Zero, 0);
@@ -83,27 +84,28 @@ namespace Hook
                 args.Y = mouseInput.pos.y;
                 args.type = (MouseMessages)wParam;
                 args.invokedTime = DateTime.Now;
-                mouseEvent(null, args);
 
-                /*
-                if (MouseMessages.WM_LBUTTONDOWN == (MouseMessages)wParam)
-                {
-                    args.type = (MouseMessages)wParam;
-                    clickEvent(null, new HookEventArgs());
+                if(latestEvent == null) {
+                    latestEvent = args;
                 }
 
-                if(MouseMessages.WM_MOUSEMOVE == (MouseMessages)wParam)
+                if(mouseInput.pos.x != latestEvent.X ||
+                    mouseInput.pos.y != latestEvent.Y ||
+                    wParam != (IntPtr)MouseMessages.WM_MOUSEMOVE)
                 {
-                    args.type = (MouseMessages)wParam;
-                    moveEvent(null, new HookEventArgs());
+                    TimeSpan diff = args.invokedTime.Subtract(latestEvent.invokedTime);
+                    Console.WriteLine(diff);
+                    if (diff.CompareTo(new TimeSpan(0,0,0,0,30)) >= 0)
+                    {
+                        mouseEvent(null, args);
+                        latestEvent = args;
+                    }
                 }
-                */
-
             }
             return CallNextHookEx(hookHandle, nCode, wParam, IParam);
         }
         
-        public static void processClick(MouseMessages type, long dx, long dy)
+        public static void processClick(MouseMessages type, int dx, int dy)
         {
             if(type == MouseMessages.WM_LBUTTONDOWN) {
                 mouse_event(MOUSEEVENTF_LEFTDOWN, dx, dy, 0, 0);

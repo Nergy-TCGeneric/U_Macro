@@ -132,8 +132,10 @@
             this.Controls.Add(this.modifySelectedMacro);
             this.Controls.Add(this.recordMacro);
             this.Controls.Add(this.procedureList);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.recordMethodGroup.ResumeLayout(false);
             this.recordMethodGroup.PerformLayout();
             this.ResumeLayout(false);

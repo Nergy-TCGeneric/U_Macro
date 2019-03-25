@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using Hook;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace UMacro
 {
     public partial class Form1 : Form
     {
         private bool isRecording = false;
-        private bool isPlaying = false;
+        // private bool isPlaying = false;
         private DateTime prevEventTime = DateTime.Now;
         private const int stub_recInterval = 100;
 
@@ -31,10 +33,14 @@ namespace UMacro
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Console.WriteLine(procedureList.SelectedItem);
         }
 
-        private void recordMacro_Click(object sender, EventArgs e)
+        private void recordMacro_Click(object sender, EventArgs e) {
+            toggleRecord();
+        }
+
+        private void toggleRecord()
         {
             if (isRecording)
             {
@@ -49,6 +55,7 @@ namespace UMacro
             {
                 isRecording = true;
                 recordMacro.Text = "기록 중지";
+                procedureList.Items.Clear();
                 MouseHook.startHook();
                 MouseHook.mouseEvent += mouseEvent;
                 KeyboardHook.startHook();
@@ -91,8 +98,10 @@ namespace UMacro
             if(!isRecording)
             {
                 recordMacro.Enabled = false;
+                // Doesn't look good. CLARIFY DATA TYPE IMMEDIATELY!
                 foreach(object eventArgs in procedureList.Items)
                 {
+                    Thread.Sleep(33);
                     if(eventArgs is MouseHook.MouseHookEventArgs)
                     {
                         MouseHook.MouseHookEventArgs mEvent = (MouseHook.MouseHookEventArgs) eventArgs;
@@ -102,11 +111,9 @@ namespace UMacro
                         if(mEvent.type == MouseHook.MouseMessages.WM_MOUSEMOVE) {
                             Cursor.Position = new Point(mEvent.X, mEvent.Y);
                         }
-                        else if(mEvent.type == MouseHook.MouseMessages.WM_LBUTTONDOWN) {
-                            // Hook.mouse_event(MouseHook.MOUSEEVENTF_LEFTDOWN, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                        else {
                             MouseHook.processClick(mEvent.type, mEvent.X, mEvent.Y);
                         }
-                        // this.Cursor.Position = new Point(mEvent.X, mEvent.Y);
                     }
                     else if(eventArgs is KeyboardHook.KeyboardHookEventArgs)
                     {
@@ -114,6 +121,17 @@ namespace UMacro
                         Console.WriteLine((Keys)kEvent.KeyCode);
                     }
                 }
+                recordMacro.Enabled = true;
+            }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine("Pressed Keyboard: " + e.KeyCode);
+            Console.WriteLine("Pressed Keyboard raw: " + e.KeyValue);
+            // F8 for 119, F9 for 120
+            if(e.KeyValue == 119) {
+                toggleRecord();
             }
         }
     }
