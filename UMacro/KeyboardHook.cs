@@ -15,7 +15,7 @@ namespace Hook
         private static HookProc callBackDelegate;
         private const int WM_KEYDOWN = 0x0100;
 
-        public static event EventHandler keyboardEvent = delegate { };
+        public static event EventHandler<KeyboardHookEventArgs> keyboardEvent = delegate { };
 
         public class KeyboardHookEventArgs : EventArgs
         {

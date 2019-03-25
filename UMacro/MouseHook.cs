@@ -17,16 +17,16 @@ namespace Hook
         public class MouseHookEventArgs : EventArgs
         {
             public MouseMessages type;
-            public int X;
-            public int Y;
+            public long X;
+            public long Y;
             public DateTime invokedTime;
         }
 
         [StructLayout(LayoutKind.Sequential)]
         private struct POINT
         {
-            public int x;
-            public int y;
+            public long x;
+            public long y;
         }
         [StructLayout(LayoutKind.Sequential)]
         private struct MouseHookConstruct
@@ -37,6 +37,7 @@ namespace Hook
             public int dwExtraInfo;
         }
 
+        // This one is for 'Received mouse messages', not for event-execution.
         public enum MouseMessages
         {
             WM_LBUTTONDOWN = 0x0201,
@@ -46,6 +47,11 @@ namespace Hook
             WM_RBUTTONDOWN = 0x0204,
             WM_RBUTTONUP = 0x0205
         }
+
+        private const int MOUSEEVENTF_LEFTDOWN = 0x02;
+        private const int MOUSEEVENTF_LEFTUP = 0x04;
+        private const int MOUSEEVENTF_RIGHTDOWN = 0x08;
+        private const int MOUSEEVENTF_RIGHTUP = 0x10;
 
         public static void startHook()
         {
@@ -95,6 +101,22 @@ namespace Hook
 
             }
             return CallNextHookEx(hookHandle, nCode, wParam, IParam);
+        }
+        
+        public static void processClick(MouseMessages type, long dx, long dy)
+        {
+            if(type == MouseMessages.WM_LBUTTONDOWN) {
+                mouse_event(MOUSEEVENTF_LEFTDOWN, dx, dy, 0, 0);
+            }
+            else if(type == MouseMessages.WM_LBUTTONUP) {
+                mouse_event(MOUSEEVENTF_LEFTUP, dx, dy, 0, 0);
+            }
+            else if(type == MouseMessages.WM_RBUTTONUP) {
+                mouse_event(MOUSEEVENTF_RIGHTUP, dx, dy, 0, 0);
+            }
+            else if(type == MouseMessages.WM_RBUTTONDOWN) {
+                mouse_event(MOUSEEVENTF_RIGHTDOWN, dx, dy, 0, 0);
+            }
         }
 
         public static int getHookHandle() { return hookHandle;  }

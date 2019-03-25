@@ -41,6 +41,9 @@ namespace UMacro
                 isRecording = false;
                 recordMacro.Text = "기록 시작";
                 MouseHook.StopHook();
+                KeyboardHook.StopHook();
+                MouseHook.mouseEvent -= mouseEvent;
+                KeyboardHook.keyboardEvent -= keyboardEvent;
             }
             else
             {
@@ -48,6 +51,8 @@ namespace UMacro
                 recordMacro.Text = "기록 중지";
                 MouseHook.startHook();
                 MouseHook.mouseEvent += mouseEvent;
+                KeyboardHook.startHook();
+                KeyboardHook.keyboardEvent += keyboardEvent;
             }
         }
 
@@ -86,17 +91,27 @@ namespace UMacro
             if(!isRecording)
             {
                 recordMacro.Enabled = false;
-                foreach(object eventArgs in procedureList.Items) {
+                foreach(object eventArgs in procedureList.Items)
+                {
                     if(eventArgs is MouseHook.MouseHookEventArgs)
                     {
-                        this.Cursor = new Cursor(Cursor.Current.Handle);
                         MouseHook.MouseHookEventArgs mEvent = (MouseHook.MouseHookEventArgs) eventArgs;
-                        this.Cursor.Position = new Point(mEvent.X, mEvent.Y);
+                        Console.WriteLine(mEvent.type);
+                        Cursor = new Cursor(Cursor.Current.Handle);
 
+                        if(mEvent.type == MouseHook.MouseMessages.WM_MOUSEMOVE) {
+                            Cursor.Position = new Point(mEvent.X, mEvent.Y);
+                        }
+                        else if(mEvent.type == MouseHook.MouseMessages.WM_LBUTTONDOWN) {
+                            // Hook.mouse_event(MouseHook.MOUSEEVENTF_LEFTDOWN, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                            MouseHook.processClick(mEvent.type, mEvent.X, mEvent.Y);
+                        }
+                        // this.Cursor.Position = new Point(mEvent.X, mEvent.Y);
                     }
                     else if(eventArgs is KeyboardHook.KeyboardHookEventArgs)
                     {
-
+                        KeyboardHook.KeyboardHookEventArgs kEvent = (KeyboardHook.KeyboardHookEventArgs) eventArgs;
+                        Console.WriteLine((Keys)kEvent.KeyCode);
                     }
                 }
             }

@@ -21,5 +21,7 @@ namespace Hook
         public static extern int CallNextHookEx(int idHook, int nCode, IntPtr wParam, IntPtr IParam);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern IntPtr GetModuleHandle(string lpModuleName);
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention =CallingConvention.StdCall)]
+        public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
     }
 }
