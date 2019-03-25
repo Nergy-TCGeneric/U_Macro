@@ -157,7 +157,7 @@
     <value>1</value>
   </data>
   <data name="recordMouseMacro.Text" xml:space="preserve">
-    <value>Record mouse</value>
+    <value>마우스 기록 시작</value>
   </data>
   <data name="&gt;&gt;recordMouseMacro.Name" xml:space="preserve">
     <value>recordMouseMacro</value>
@@ -422,9 +422,6 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>504, 320</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>U Macro</value>

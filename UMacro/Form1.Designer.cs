@@ -38,8 +38,8 @@
             this.importFromFile = new System.Windows.Forms.Button();
             this.InsertMacroProcedure = new System.Windows.Forms.Button();
             this.recordMethodGroup = new System.Windows.Forms.GroupBox();
-            this.continuousMethod = new System.Windows.Forms.RadioButton();
             this.individualMethod = new System.Windows.Forms.RadioButton();
+            this.continuousMethod = new System.Windows.Forms.RadioButton();
             this.recordMethodGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,7 @@
             resources.ApplyResources(this.recordMouseMacro, "recordMouseMacro");
             this.recordMouseMacro.Name = "recordMouseMacro";
             this.recordMouseMacro.UseVisualStyleBackColor = true;
+            this.recordMouseMacro.Click += new System.EventHandler(this.recordMouseMacro_Click);
             // 
             // recordKeyboardMacro
             // 
@@ -100,19 +101,19 @@
             this.recordMethodGroup.Name = "recordMethodGroup";
             this.recordMethodGroup.TabStop = false;
             // 
-            // continuousMethod
-            // 
-            resources.ApplyResources(this.continuousMethod, "continuousMethod");
-            this.continuousMethod.Name = "continuousMethod";
-            this.continuousMethod.TabStop = true;
-            this.continuousMethod.UseVisualStyleBackColor = true;
-            // 
             // individualMethod
             // 
             resources.ApplyResources(this.individualMethod, "individualMethod");
             this.individualMethod.Name = "individualMethod";
             this.individualMethod.TabStop = true;
             this.individualMethod.UseVisualStyleBackColor = true;
+            // 
+            // continuousMethod
+            // 
+            resources.ApplyResources(this.continuousMethod, "continuousMethod");
+            this.continuousMethod.Name = "continuousMethod";
+            this.continuousMethod.TabStop = true;
+            this.continuousMethod.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
