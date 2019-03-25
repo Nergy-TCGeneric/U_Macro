@@ -33,28 +33,44 @@ namespace UMacro
 
         }
 
-        private void recordMouseMacro_Click(object sender, EventArgs e)
+        private void recordMacro_Click(object sender, EventArgs e)
         {
             if (isRecording)
             {
                 isRecording = false;
-                recordMouseMacro.Text = "마우스 기록 시작";
+                recordMacro.Text = "기록 시작";
                 MouseHook.StopHook();
             }
             else
             {
                 isRecording = true;
-                recordMouseMacro.Text = "마우스 기록 중지";
+                recordMacro.Text = "기록 중지";
                 MouseHook.startHook();
-                // Thread moveThread = new Thread(new ThreadStart(recordMouseMovement));
+                MouseHook.mouseEvent += mouseEvent;
             }
         }
 
-        private void clickEvent(object sender, MouseHook.HookEventArgs e)
+        private void mouseEvent(object sender, MouseHook.MouseHookEventArgs e)
         {
-           // procedureList.Items.Add()
-           if(e.invokedTime.Subtract(prevEventTime) >= 10)
+            // TODO: Make it more fancier.
+            procedureList.Items.Add(e);
+        }
 
+        private void keyboardEvent(object sender, KeyboardHook.KeyboardHookEventArgs e)
+        {
+            // TODO: Make it more fancier.
+            procedureList.Items.Add(e);
+        }
+
+        private void exportToFile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteSelectedMacro_Click(object sender, EventArgs e)
+        {
+            if(procedureList.SelectedIndex > -1)
+                procedureList.Items.RemoveAt(procedureList.SelectedIndex);
         }
     }
 }

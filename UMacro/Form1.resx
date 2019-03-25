@@ -141,68 +141,41 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;procedureList.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="recordMouseMacro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="recordMouseMacro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 12</value>
-  </data>
-  <data name="recordMouseMacro.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 36</value>
-  </data>
-  <data name="recordMouseMacro.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="recordMouseMacro.Text" xml:space="preserve">
-    <value>마우스 기록 시작</value>
-  </data>
-  <data name="&gt;&gt;recordMouseMacro.Name" xml:space="preserve">
-    <value>recordMouseMacro</value>
-  </data>
-  <data name="&gt;&gt;recordMouseMacro.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;recordMouseMacro.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;recordMouseMacro.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="recordKeyboardMacro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="recordMacro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="recordKeyboardMacro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 54</value>
+  <data name="recordMacro.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 29</value>
   </data>
-  <data name="recordKeyboardMacro.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="recordMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
   </data>
-  <data name="recordKeyboardMacro.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="recordMacro.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="recordKeyboardMacro.Text" xml:space="preserve">
-    <value>Record keyboard</value>
+  <data name="recordMacro.Text" xml:space="preserve">
+    <value>기록 시작</value>
   </data>
-  <data name="&gt;&gt;recordKeyboardMacro.Name" xml:space="preserve">
-    <value>recordKeyboardMacro</value>
+  <data name="&gt;&gt;recordMacro.Name" xml:space="preserve">
+    <value>recordMacro</value>
   </data>
-  <data name="&gt;&gt;recordKeyboardMacro.Type" xml:space="preserve">
+  <data name="&gt;&gt;recordMacro.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;recordKeyboardMacro.Parent" xml:space="preserve">
+  <data name="&gt;&gt;recordMacro.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;recordKeyboardMacro.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;recordMacro.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="modifySelectedMacro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="modifySelectedMacro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 96</value>
+    <value>216, 71</value>
   </data>
   <data name="modifySelectedMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -229,7 +202,7 @@
     <value>NoControl</value>
   </data>
   <data name="deleteSelectedMacro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 138</value>
+    <value>216, 112</value>
   </data>
   <data name="deleteSelectedMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -256,7 +229,7 @@
     <value>NoControl</value>
   </data>
   <data name="exportToFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 222</value>
+    <value>216, 196</value>
   </data>
   <data name="exportToFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -283,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="importFromFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 264</value>
+    <value>216, 238</value>
   </data>
   <data name="importFromFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -310,7 +283,7 @@
     <value>NoControl</value>
   </data>
   <data name="InsertMacroProcedure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 180</value>
+    <value>216, 154</value>
   </data>
   <data name="InsertMacroProcedure.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -332,6 +305,54 @@
   </data>
   <data name="&gt;&gt;InsertMacroProcedure.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;individualMethod.Name" xml:space="preserve">
+    <value>individualMethod</value>
+  </data>
+  <data name="&gt;&gt;individualMethod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;individualMethod.Parent" xml:space="preserve">
+    <value>recordMethodGroup</value>
+  </data>
+  <data name="&gt;&gt;individualMethod.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;continuousMethod.Name" xml:space="preserve">
+    <value>continuousMethod</value>
+  </data>
+  <data name="&gt;&gt;continuousMethod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;continuousMethod.Parent" xml:space="preserve">
+    <value>recordMethodGroup</value>
+  </data>
+  <data name="&gt;&gt;continuousMethod.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="recordMethodGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>364, 99</value>
+  </data>
+  <data name="recordMethodGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 108</value>
+  </data>
+  <data name="recordMethodGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="recordMethodGroup.Text" xml:space="preserve">
+    <value>Recording method</value>
+  </data>
+  <data name="&gt;&gt;recordMethodGroup.Name" xml:space="preserve">
+    <value>recordMethodGroup</value>
+  </data>
+  <data name="&gt;&gt;recordMethodGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;recordMethodGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;recordMethodGroup.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="individualMethod.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -389,30 +410,6 @@
   </data>
   <data name="&gt;&gt;continuousMethod.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="recordMethodGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 99</value>
-  </data>
-  <data name="recordMethodGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 108</value>
-  </data>
-  <data name="recordMethodGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="recordMethodGroup.Text" xml:space="preserve">
-    <value>Recording method</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.Name" xml:space="preserve">
-    <value>recordMethodGroup</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

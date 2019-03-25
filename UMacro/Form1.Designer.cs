@@ -30,8 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.procedureList = new System.Windows.Forms.ListBox();
-            this.recordMouseMacro = new System.Windows.Forms.Button();
-            this.recordKeyboardMacro = new System.Windows.Forms.Button();
+            this.recordMacro = new System.Windows.Forms.Button();
             this.modifySelectedMacro = new System.Windows.Forms.Button();
             this.deleteSelectedMacro = new System.Windows.Forms.Button();
             this.exportToFile = new System.Windows.Forms.Button();
@@ -50,18 +49,12 @@
             this.procedureList.Name = "procedureList";
             this.procedureList.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // recordMouseMacro
+            // recordMacro
             // 
-            resources.ApplyResources(this.recordMouseMacro, "recordMouseMacro");
-            this.recordMouseMacro.Name = "recordMouseMacro";
-            this.recordMouseMacro.UseVisualStyleBackColor = true;
-            this.recordMouseMacro.Click += new System.EventHandler(this.recordMouseMacro_Click);
-            // 
-            // recordKeyboardMacro
-            // 
-            resources.ApplyResources(this.recordKeyboardMacro, "recordKeyboardMacro");
-            this.recordKeyboardMacro.Name = "recordKeyboardMacro";
-            this.recordKeyboardMacro.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.recordMacro, "recordMacro");
+            this.recordMacro.Name = "recordMacro";
+            this.recordMacro.UseVisualStyleBackColor = true;
+            this.recordMacro.Click += new System.EventHandler(this.recordMacro_Click);
             // 
             // modifySelectedMacro
             // 
@@ -74,12 +67,14 @@
             resources.ApplyResources(this.deleteSelectedMacro, "deleteSelectedMacro");
             this.deleteSelectedMacro.Name = "deleteSelectedMacro";
             this.deleteSelectedMacro.UseVisualStyleBackColor = true;
+            this.deleteSelectedMacro.Click += new System.EventHandler(this.deleteSelectedMacro_Click);
             // 
             // exportToFile
             // 
             resources.ApplyResources(this.exportToFile, "exportToFile");
             this.exportToFile.Name = "exportToFile";
             this.exportToFile.UseVisualStyleBackColor = true;
+            this.exportToFile.Click += new System.EventHandler(this.exportToFile_Click);
             // 
             // importFromFile
             // 
@@ -125,8 +120,7 @@
             this.Controls.Add(this.exportToFile);
             this.Controls.Add(this.deleteSelectedMacro);
             this.Controls.Add(this.modifySelectedMacro);
-            this.Controls.Add(this.recordKeyboardMacro);
-            this.Controls.Add(this.recordMouseMacro);
+            this.Controls.Add(this.recordMacro);
             this.Controls.Add(this.procedureList);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -139,8 +133,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox procedureList;
-        private System.Windows.Forms.Button recordMouseMacro;
-        private System.Windows.Forms.Button recordKeyboardMacro;
+        private System.Windows.Forms.Button recordMacro;
         private System.Windows.Forms.Button modifySelectedMacro;
         private System.Windows.Forms.Button deleteSelectedMacro;
         private System.Windows.Forms.Button exportToFile;

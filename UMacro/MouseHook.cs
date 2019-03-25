@@ -12,10 +12,9 @@ namespace Hook
         private static int hookHandle = 0;
         private static HookProc callBackDelegate;
 
-        public static event EventHandler clickEvent = delegate { };
-        public static event EventHandler moveEvent = delegate { };
+        public static event EventHandler<MouseHookEventArgs> mouseEvent = delegate { };
 
-        public class HookEventArgs : EventArgs
+        public class MouseHookEventArgs : EventArgs
         {
             public MouseMessages type;
             public int X;
@@ -70,38 +69,30 @@ namespace Hook
 
         public static int CallBack(int nCode, IntPtr wParam, IntPtr IParam)
         {
-            /*
-            if (nCode >= 0 && MouseMessages.WM_LBUTTONDOWN == (MouseMessages)wParam)
-            {
-                MouseHookConstruct mouseInput = (MouseHookConstruct)Marshal.PtrToStructure(IParam, typeof(MouseHookConstruct));
-                HookEventArgs args = new HookEventArgs();
-                // args.X = 
-                // clickEvent(null, new EventArgs());
-            }
-            else if (nCode >= 0 && MouseMessages.WM_MOUSEMOVE == (MouseMessages)wParam)
-            {
-                MouseHookConstruct mouseInput = (MouseHookConstruct)Marshal.PtrToStructure(IParam, typeof(MouseHookConstruct));
-                moveEvent(null, new EventArgs());
-            }
-            */
             if(nCode >= 0)
             {
                 MouseHookConstruct mouseInput = (MouseHookConstruct)Marshal.PtrToStructure(IParam, typeof(MouseHookConstruct));
-                HookEventArgs args = new HookEventArgs();
+                MouseHookEventArgs args = new MouseHookEventArgs();
                 args.X = mouseInput.pos.x;
                 args.Y = mouseInput.pos.y;
+                args.type = (MouseMessages)wParam;
+                args.invokedTime = DateTime.Now;
+                mouseEvent(null, args);
 
+                /*
                 if (MouseMessages.WM_LBUTTONDOWN == (MouseMessages)wParam)
                 {
                     args.type = (MouseMessages)wParam;
-                    clickEvent(null, new EventArgs());
+                    clickEvent(null, new HookEventArgs());
                 }
 
                 if(MouseMessages.WM_MOUSEMOVE == (MouseMessages)wParam)
                 {
                     args.type = (MouseMessages)wParam;
-                    clickEvent(null, new EventArgs());
+                    moveEvent(null, new HookEventArgs());
                 }
+                */
+
             }
             return CallNextHookEx(hookHandle, nCode, wParam, IParam);
         }

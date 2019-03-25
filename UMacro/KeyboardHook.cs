@@ -15,6 +15,14 @@ namespace Hook
         private static HookProc callBackDelegate;
         private const int WM_KEYDOWN = 0x0100;
 
+        public static event EventHandler keyboardEvent = delegate { };
+
+        public class KeyboardHookEventArgs : EventArgs
+        {
+            public int KeyCode;
+            public DateTime invokedTime;
+        }
+
         public static void startHook()
         {
             if (callBackDelegate != null)
@@ -37,11 +45,13 @@ namespace Hook
 
         public static int CallBack(int nCode, IntPtr wParam, IntPtr IParam)
         {
-            Console.WriteLine(WM_KEYDOWN);
            if(nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
                 int keyCode = Marshal.ReadInt32(IParam);
-                Console.WriteLine("Input Keyboard : " + (Keys)keyCode);
+                KeyboardHookEventArgs args = new KeyboardHookEventArgs();
+                args.KeyCode = keyCode;
+                args.invokedTime = DateTime.Now;
+                keyboardEvent(null, args);
             }
             return CallNextHookEx(hookHandle, nCode, wParam, IParam);
         }
