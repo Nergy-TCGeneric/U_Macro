@@ -39,6 +39,7 @@
             this.recordMethodGroup = new System.Windows.Forms.GroupBox();
             this.individualMethod = new System.Windows.Forms.RadioButton();
             this.continuousMethod = new System.Windows.Forms.RadioButton();
+            this.playBtn = new System.Windows.Forms.Button();
             this.recordMethodGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +88,7 @@
             resources.ApplyResources(this.InsertMacroProcedure, "InsertMacroProcedure");
             this.InsertMacroProcedure.Name = "InsertMacroProcedure";
             this.InsertMacroProcedure.UseVisualStyleBackColor = true;
+            this.InsertMacroProcedure.Click += new System.EventHandler(this.InsertMacroProcedure_Click);
             // 
             // recordMethodGroup
             // 
@@ -110,10 +112,18 @@
             this.continuousMethod.TabStop = true;
             this.continuousMethod.UseVisualStyleBackColor = true;
             // 
+            // playBtn
+            // 
+            resources.ApplyResources(this.playBtn, "playBtn");
+            this.playBtn.Name = "playBtn";
+            this.playBtn.UseVisualStyleBackColor = true;
+            this.playBtn.Click += new System.EventHandler(this.playBtn_Click);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.playBtn);
             this.Controls.Add(this.recordMethodGroup);
             this.Controls.Add(this.InsertMacroProcedure);
             this.Controls.Add(this.importFromFile);
@@ -142,6 +152,7 @@
         private System.Windows.Forms.GroupBox recordMethodGroup;
         private System.Windows.Forms.RadioButton individualMethod;
         private System.Windows.Forms.RadioButton continuousMethod;
+        private System.Windows.Forms.Button playBtn;
     }
 }
 
