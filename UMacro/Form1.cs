@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using Hook;
+using WindowsInput;
 using System.Xml.Serialization;
 using System.IO;
 
@@ -74,6 +75,7 @@ namespace UMacro
             {
                 recordMacro.Enabled = false;
                 playInterval.Enabled = false;
+                InputSimulator inputSim = new InputSimulator();
 
                 // Doesn't look good. CLARIFY DATA TYPE IMMEDIATELY!
                 foreach (object events in procedureList.Items)
@@ -97,7 +99,8 @@ namespace UMacro
                     else if (events is KeyboardHook.KeyboardHookEventArgs)
                     {
                         KeyboardHook.KeyboardHookEventArgs kEvent = (KeyboardHook.KeyboardHookEventArgs)events;
-                        Console.WriteLine((Keys)kEvent.KeyCode);
+                        // Assuming that every kEvent is KeyDown event...
+
                     }
                     else if (events is Delay)
                     {

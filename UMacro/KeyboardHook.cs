@@ -15,12 +15,12 @@ namespace Hook
         private static int hookHandle = 0;
         private static HookProc callBackDelegate;
         private static KeyboardHookEventArgs latestEvent;
-        private const int WM_KEYDOWN = 0x0100;
 
         public static event EventHandler<KeyboardHookEventArgs> keyboardEvent = delegate { };
 
         public class KeyboardHookEventArgs : EventArgs
         {
+            public KeyboardMessages type;
             public int KeyCode;
             public DateTime invokedTime;
             public TimeSpan diff;
@@ -28,6 +28,12 @@ namespace Hook
             public override string ToString() {
                 return "(키보드) " + KeyCode.ToString() + " 눌림";
             }
+        }
+        
+        public enum KeyboardMessages
+        {
+            WM_KEYDOWN = 0x0100,
+            WM_KEYUP = 0x0101
         }
 
         public static void startHook()
@@ -52,12 +58,17 @@ namespace Hook
 
         public static int CallBack(int nCode, IntPtr wParam, IntPtr IParam)
         {
-           if(nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
+           if(nCode >= 0)
             {
                 int keyCode = Marshal.ReadInt32(IParam);
                 KeyboardHookEventArgs args = new KeyboardHookEventArgs();
                 args.KeyCode = keyCode;
                 args.invokedTime = DateTime.Now;
+
+                if (wParam == (IntPtr)KeyboardMessages.WM_KEYUP)
+                    args.type = KeyboardMessages.WM_KEYUP;
+                else if (wParam == (IntPtr)KeyboardMessages.WM_KEYDOWN)
+                    args.type = KeyboardMessages.WM_KEYDOWN;
 
                 if(latestEvent == null) {
                     latestEvent = args;
