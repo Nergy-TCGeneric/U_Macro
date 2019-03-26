@@ -161,18 +161,6 @@ namespace UMacro
             }
         }
 
-        private void playInterval_TextChanged(object sender, EventArgs e) {
-            pIntv = getIntervalFromControls(playInterval.Text);
-        }
-
-        private void mouseRecordInterval_TextChanged(object sender, EventArgs e) {
-            mRecordIntv = getIntervalFromControls(mouseRecordInterval.Text);
-        }
-
-        private void keyboardRecordInterval_TextChanged(object sender, EventArgs e) {
-            kRecordIntv = getIntervalFromControls(keyboardRecordInterval.Text);
-        }
-
         private int getIntervalFromControls(String ctrText)
         {
             try
@@ -192,6 +180,25 @@ namespace UMacro
 
         public static int getMouseRecordInterval() { return mRecordIntv; }
         public static int getKeyboardRecordInterval() { return kRecordIntv;  }
+
+        private void mouseRecordInterval_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return) {
+                mRecordIntv = getIntervalFromControls(mouseRecordInterval.Text);
+            }
+        }
+
+        private void playInterval_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+                pIntv = getIntervalFromControls(playInterval.Text);
+        }
+
+        private void keyboardRecordInterval_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+                kRecordIntv = getIntervalFromControls(keyboardRecordInterval.Text);
+        }
     }
 }
  

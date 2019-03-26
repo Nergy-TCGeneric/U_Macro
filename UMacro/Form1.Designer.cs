@@ -114,7 +114,7 @@
             // 
             resources.ApplyResources(this.playInterval, "playInterval");
             this.playInterval.Name = "playInterval";
-            this.playInterval.TextChanged += new System.EventHandler(this.playInterval_TextChanged);
+            this.playInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.playInterval_KeyPress);
             // 
             // label2
             // 
@@ -130,7 +130,7 @@
             // 
             resources.ApplyResources(this.mouseRecordInterval, "mouseRecordInterval");
             this.mouseRecordInterval.Name = "mouseRecordInterval";
-            this.mouseRecordInterval.TextChanged += new System.EventHandler(this.mouseRecordInterval_TextChanged);
+            this.mouseRecordInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mouseRecordInterval_KeyPress);
             // 
             // label4
             // 
@@ -146,7 +146,7 @@
             // 
             resources.ApplyResources(this.keyboardRecordInterval, "keyboardRecordInterval");
             this.keyboardRecordInterval.Name = "keyboardRecordInterval";
-            this.keyboardRecordInterval.TextChanged += new System.EventHandler(this.keyboardRecordInterval_TextChanged);
+            this.keyboardRecordInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.keyboardRecordInterval_KeyPress);
             // 
             // label6
             // 
