@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UMacro;
 
 namespace Hook
 {
@@ -22,6 +23,10 @@ namespace Hook
         {
             public int KeyCode;
             public DateTime invokedTime;
+
+            public override string ToString() {
+                return "(키보드) " + KeyCode.ToString() + " 눌림";
+            }
         }
 
         public static void startHook()
@@ -58,7 +63,7 @@ namespace Hook
                 }
 
                 TimeSpan diff = args.invokedTime.Subtract(latestEvent.invokedTime);
-                if (diff.CompareTo(new TimeSpan(0, 0, 0, 0, 30)) >= 0)
+                if (diff.CompareTo(new TimeSpan(0, 0, 0, 0, Form1.getKeyboardRecordInterval())) >= 0)
                 {
                     keyboardEvent(null, args);
                     latestEvent = args;

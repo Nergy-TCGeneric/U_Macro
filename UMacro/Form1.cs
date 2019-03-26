@@ -17,9 +17,10 @@ namespace UMacro
     public partial class Form1 : Form
     {
         private bool isRecording = false;
-        // private bool isPlaying = false;
         private DateTime prevEventTime = DateTime.Now;
-        private const int stub_recInterval = 100;
+        private static int mRecordIntv;
+        private static int kRecordIntv;
+        private static int pIntv;
 
         public Form1()
         {
@@ -28,7 +29,9 @@ namespace UMacro
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            pIntv = getIntervalFromControls(playInterval.Text);
+            mRecordIntv = getIntervalFromControls(mouseRecordInterval.Text);
+            kRecordIntv = getIntervalFromControls(keyboardRecordInterval.Text);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace UMacro
             if (isRecording)
             {
                 isRecording = false;
+                playBtn.Enabled = true;
                 recordMacro.Text = "기록 시작";
                 MouseHook.StopHook();
                 KeyboardHook.StopHook();
@@ -54,6 +58,7 @@ namespace UMacro
             else
             {
                 isRecording = true;
+                playBtn.Enabled = false;
                 recordMacro.Text = "기록 중지";
                 procedureList.Items.Clear();
                 MouseHook.startHook();
@@ -63,18 +68,54 @@ namespace UMacro
             }
         }
 
+        private void playMacro()
+        {
+            if (!isRecording)
+            {
+                recordMacro.Enabled = false;
+                playInterval.Enabled = false;
+
+                // Doesn't look good. CLARIFY DATA TYPE IMMEDIATELY!
+                foreach (object eventArgs in procedureList.Items)
+                {
+                    Thread.Sleep(pIntv);
+                    if (eventArgs is MouseHook.MouseHookEventArgs)
+                    {
+                        MouseHook.MouseHookEventArgs mEvent = (MouseHook.MouseHookEventArgs)eventArgs;
+                        Console.WriteLine(mEvent.type);
+                        Cursor = new Cursor(Cursor.Current.Handle);
+
+                        if (mEvent.type == MouseHook.MouseMessages.WM_MOUSEMOVE)
+                        {
+                            Cursor.Position = new Point(mEvent.X, mEvent.Y);
+                        }
+                        else
+                        {
+                            MouseHook.processClick(mEvent.type, mEvent.X, mEvent.Y);
+                        }
+                    }
+                    else if (eventArgs is KeyboardHook.KeyboardHookEventArgs)
+                    {
+                        KeyboardHook.KeyboardHookEventArgs kEvent = (KeyboardHook.KeyboardHookEventArgs)eventArgs;
+                        Console.WriteLine((Keys)kEvent.KeyCode);
+                    }
+                }
+                recordMacro.Enabled = true;
+                playInterval.Enabled = true;
+            }
+        }
+
         private void mouseEvent(object sender, MouseHook.MouseHookEventArgs e)
         {
-            // TODO: Make it more fancier.
             procedureList.Items.Add(e);
         }
 
         private void keyboardEvent(object sender, KeyboardHook.KeyboardHookEventArgs e)
         {
-            // TODO: Make it more fancier.
             procedureList.Items.Add(e);
         }
 
+        // TODO: Serialize into any type. XML or binary.. whatever is ok.
         private void exportToFile_Click(object sender, EventArgs e)
         {
 
@@ -90,39 +131,21 @@ namespace UMacro
         {
             // TODO: Make new windows.
             // TODO: Users can specifiy type, other details and can insert macro to procedureList.
+        }
+
+        // TODO: Make new windows, and make user can change its macro.
+        private void modifySelectedMacro_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private void playBtn_Click(object sender, EventArgs e)
+        private void importFromFile_Click(object sender, EventArgs e)
         {
-            if(!isRecording)
-            {
-                recordMacro.Enabled = false;
-                // Doesn't look good. CLARIFY DATA TYPE IMMEDIATELY!
-                foreach(object eventArgs in procedureList.Items)
-                {
-                    Thread.Sleep(33);
-                    if(eventArgs is MouseHook.MouseHookEventArgs)
-                    {
-                        MouseHook.MouseHookEventArgs mEvent = (MouseHook.MouseHookEventArgs) eventArgs;
-                        Console.WriteLine(mEvent.type);
-                        Cursor = new Cursor(Cursor.Current.Handle);
 
-                        if(mEvent.type == MouseHook.MouseMessages.WM_MOUSEMOVE) {
-                            Cursor.Position = new Point(mEvent.X, mEvent.Y);
-                        }
-                        else {
-                            MouseHook.processClick(mEvent.type, mEvent.X, mEvent.Y);
-                        }
-                    }
-                    else if(eventArgs is KeyboardHook.KeyboardHookEventArgs)
-                    {
-                        KeyboardHook.KeyboardHookEventArgs kEvent = (KeyboardHook.KeyboardHookEventArgs) eventArgs;
-                        Console.WriteLine((Keys)kEvent.KeyCode);
-                    }
-                }
-                recordMacro.Enabled = true;
-            }
+        }
+
+        private void playBtn_Click(object sender, EventArgs e) {
+            playMacro();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -133,7 +156,42 @@ namespace UMacro
             if(e.KeyValue == 119) {
                 toggleRecord();
             }
+            else if(e.KeyValue == 120) {
+                playMacro();
+            }
         }
+
+        private void playInterval_TextChanged(object sender, EventArgs e) {
+            pIntv = getIntervalFromControls(playInterval.Text);
+        }
+
+        private void mouseRecordInterval_TextChanged(object sender, EventArgs e) {
+            mRecordIntv = getIntervalFromControls(mouseRecordInterval.Text);
+        }
+
+        private void keyboardRecordInterval_TextChanged(object sender, EventArgs e) {
+            kRecordIntv = getIntervalFromControls(keyboardRecordInterval.Text);
+        }
+
+        private int getIntervalFromControls(String ctrText)
+        {
+            try
+            {
+                int parsed = Int32.Parse(ctrText);
+                if (parsed > 0)
+                    return parsed;
+                throw new FormatException();
+            }
+            catch(FormatException)
+            {
+                MessageBox.Show("간격은 숫자이고 0ms보다 커야 합니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // TODO: substitute with class constants as 'default value'
+                return 33;
+            }
+        }
+
+        public static int getMouseRecordInterval() { return mRecordIntv; }
+        public static int getKeyboardRecordInterval() { return kRecordIntv;  }
     }
 }
  

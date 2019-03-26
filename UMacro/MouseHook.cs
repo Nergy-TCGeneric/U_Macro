@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using UMacro;
 
 namespace Hook
 {
@@ -22,6 +23,30 @@ namespace Hook
             public int X;
             public int Y;
             public DateTime invokedTime;
+
+            public override string ToString()
+            {
+                string format = "(마우스) ";
+                if(type == MouseMessages.WM_MOUSEMOVE) {
+                    return String.Format(format + "{0}, {1} 으로 이동", X.ToString(), Y.ToString());
+                }
+                else if(type == MouseMessages.WM_LBUTTONUP) {
+                    return String.Format(format + "{0}, {1} 에서 왼쪽 마우스 뗌", X.ToString(), Y.ToString());
+                }
+                else if(type == MouseMessages.WM_LBUTTONDOWN){
+                    return String.Format(format + "{0}, {1} 에서 왼쪽 마우스 누름", X.ToString(), Y.ToString());
+                }
+                else if(type == MouseMessages.WM_RBUTTONUP) {
+                    return String.Format(format + "{0}, {1} 에서 오른쪽 마우스 뗌", X.ToString(), Y.ToString());
+                }
+                else if(type == MouseMessages.WM_RBUTTONDOWN) {
+                    return String.Format(format + "{0}, {1} 에서 오른쪽 마우스 누름", X.ToString(), Y.ToString());
+                }
+                else if(type == MouseMessages.WM_MOUSEWHEEL) {
+                    return String.Format(format + "{0}, {1} 에서 휠 누름", X.ToString(), Y.ToString());
+                }
+                return base.ToString();
+            }
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -95,7 +120,7 @@ namespace Hook
                 {
                     TimeSpan diff = args.invokedTime.Subtract(latestEvent.invokedTime);
                     Console.WriteLine(diff);
-                    if (diff.CompareTo(new TimeSpan(0,0,0,0,30)) >= 0)
+                    if (diff.CompareTo(new TimeSpan(0,0,0,0,Form1.getMouseRecordInterval())) >= 0)
                     {
                         mouseEvent(null, args);
                         latestEvent = args;

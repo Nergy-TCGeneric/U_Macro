@@ -126,7 +126,7 @@
     <value>12, 12</value>
   </data>
   <data name="procedureList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 292</value>
+    <value>220, 292</value>
   </data>
   <data name="procedureList.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -141,14 +141,14 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;procedureList.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>17</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="recordMacro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="recordMacro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 12</value>
+    <value>238, 13</value>
   </data>
   <data name="recordMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -169,13 +169,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;recordMacro.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>16</value>
   </data>
   <data name="modifySelectedMacro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="modifySelectedMacro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 99</value>
+    <value>238, 97</value>
   </data>
   <data name="modifySelectedMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -184,7 +184,7 @@
     <value>3</value>
   </data>
   <data name="modifySelectedMacro.Text" xml:space="preserve">
-    <value>Modify macro</value>
+    <value>선택된 매크로 수정</value>
   </data>
   <data name="&gt;&gt;modifySelectedMacro.Name" xml:space="preserve">
     <value>modifySelectedMacro</value>
@@ -196,13 +196,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;modifySelectedMacro.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>15</value>
   </data>
   <data name="deleteSelectedMacro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="deleteSelectedMacro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 141</value>
+    <value>238, 140</value>
   </data>
   <data name="deleteSelectedMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -211,7 +211,7 @@
     <value>4</value>
   </data>
   <data name="deleteSelectedMacro.Text" xml:space="preserve">
-    <value>Delete Macro</value>
+    <value>선택된 매크로 삭제</value>
   </data>
   <data name="&gt;&gt;deleteSelectedMacro.Name" xml:space="preserve">
     <value>deleteSelectedMacro</value>
@@ -223,13 +223,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;deleteSelectedMacro.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>14</value>
   </data>
   <data name="exportToFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="exportToFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 226</value>
+    <value>238, 225</value>
   </data>
   <data name="exportToFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -238,7 +238,7 @@
     <value>5</value>
   </data>
   <data name="exportToFile.Text" xml:space="preserve">
-    <value>Export...</value>
+    <value>내보내기...</value>
   </data>
   <data name="&gt;&gt;exportToFile.Name" xml:space="preserve">
     <value>exportToFile</value>
@@ -250,13 +250,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;exportToFile.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>13</value>
   </data>
   <data name="importFromFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="importFromFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 268</value>
+    <value>238, 268</value>
   </data>
   <data name="importFromFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -265,7 +265,7 @@
     <value>6</value>
   </data>
   <data name="importFromFile.Text" xml:space="preserve">
-    <value>Import...</value>
+    <value>불러오기...</value>
   </data>
   <data name="&gt;&gt;importFromFile.Name" xml:space="preserve">
     <value>importFromFile</value>
@@ -277,13 +277,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;importFromFile.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>12</value>
   </data>
   <data name="InsertMacroProcedure.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="InsertMacroProcedure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 184</value>
+    <value>238, 183</value>
   </data>
   <data name="InsertMacroProcedure.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -292,7 +292,7 @@
     <value>7</value>
   </data>
   <data name="InsertMacroProcedure.Text" xml:space="preserve">
-    <value>Insert Macro</value>
+    <value>매크로 삽입...</value>
   </data>
   <data name="&gt;&gt;InsertMacroProcedure.Name" xml:space="preserve">
     <value>InsertMacroProcedure</value>
@@ -304,94 +304,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;InsertMacroProcedure.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="individualMethod.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="individualMethod.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="individualMethod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 65</value>
-  </data>
-  <data name="individualMethod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 16</value>
-  </data>
-  <data name="individualMethod.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="individualMethod.Text" xml:space="preserve">
-    <value>Individual</value>
-  </data>
-  <data name="&gt;&gt;individualMethod.Name" xml:space="preserve">
-    <value>individualMethod</value>
-  </data>
-  <data name="&gt;&gt;individualMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;individualMethod.Parent" xml:space="preserve">
-    <value>recordMethodGroup</value>
-  </data>
-  <data name="&gt;&gt;individualMethod.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="continuousMethod.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="continuousMethod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 38</value>
-  </data>
-  <data name="continuousMethod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 16</value>
-  </data>
-  <data name="continuousMethod.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="continuousMethod.Text" xml:space="preserve">
-    <value>Continuous</value>
-  </data>
-  <data name="&gt;&gt;continuousMethod.Name" xml:space="preserve">
-    <value>continuousMethod</value>
-  </data>
-  <data name="&gt;&gt;continuousMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;continuousMethod.Parent" xml:space="preserve">
-    <value>recordMethodGroup</value>
-  </data>
-  <data name="&gt;&gt;continuousMethod.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="recordMethodGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 99</value>
-  </data>
-  <data name="recordMethodGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 108</value>
-  </data>
-  <data name="recordMethodGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="recordMethodGroup.Text" xml:space="preserve">
-    <value>Recording method</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.Name" xml:space="preserve">
-    <value>recordMethodGroup</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;recordMethodGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>11</value>
   </data>
   <data name="playBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="playBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 54</value>
+    <value>238, 54</value>
   </data>
   <data name="playBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 36</value>
@@ -412,6 +331,288 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;playBtn.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>379, 54</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 12</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>재생시 매크로 실행 간격</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="playInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 81</value>
+  </data>
+  <data name="playInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 21</value>
+  </data>
+  <data name="playInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="playInterval.Text" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="playInterval.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;playInterval.Name" xml:space="preserve">
+    <value>playInterval</value>
+  </data>
+  <data name="&gt;&gt;playInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;playInterval.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;playInterval.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>469, 85</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 12</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>ms</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>469, 160</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 12</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>ms</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="mouseRecordInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 156</value>
+  </data>
+  <data name="mouseRecordInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 21</value>
+  </data>
+  <data name="mouseRecordInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="mouseRecordInterval.Text" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="mouseRecordInterval.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;mouseRecordInterval.Name" xml:space="preserve">
+    <value>mouseRecordInterval</value>
+  </data>
+  <data name="&gt;&gt;mouseRecordInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mouseRecordInterval.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mouseRecordInterval.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 132</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 12</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>마우스 기록 간격</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>469, 236</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 12</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>ms</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="keyboardRecordInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 232</value>
+  </data>
+  <data name="keyboardRecordInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 21</value>
+  </data>
+  <data name="keyboardRecordInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="keyboardRecordInterval.Text" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="keyboardRecordInterval.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;keyboardRecordInterval.Name" xml:space="preserve">
+    <value>keyboardRecordInterval</value>
+  </data>
+  <data name="&gt;&gt;keyboardRecordInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;keyboardRecordInterval.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;keyboardRecordInterval.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 208</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 12</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>키보드 기록 간격</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 316</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 12</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>F8 : 매크로 기록, F9 : 매크로 재생 핫키</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -421,7 +622,7 @@
     <value>7, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>504, 320</value>
+    <value>526, 337</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>U Macro</value>
