@@ -10,6 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Hook;
 using WindowsInput;
+using WindowsInput.Native;
 using System.Xml.Serialization;
 using System.IO;
 
@@ -18,6 +19,7 @@ namespace UMacro
     public partial class Form1 : Form
     {
         private bool isRecording = false;
+        private static DateTime latestInvokedEventTime;
         private static int mRecordIntv;
         private static int kRecordIntv;
         private static int pIntv;
@@ -71,7 +73,7 @@ namespace UMacro
 
         private void playMacro()
         {
-            if (!isRecording)
+            if (!isRecording && procedureList.Items.Count > 0)
             {
                 recordMacro.Enabled = false;
                 playInterval.Enabled = false;
@@ -99,13 +101,19 @@ namespace UMacro
                     else if (events is KeyboardHook.KeyboardHookEventArgs)
                     {
                         KeyboardHook.KeyboardHookEventArgs kEvent = (KeyboardHook.KeyboardHookEventArgs)events;
-                        // Assuming that every kEvent is KeyDown event...
-
+                        if(kEvent.type == KeyboardHook.KeyboardMessages.WM_KEYDOWN)
+                        {
+                            inputSim.Keyboard.KeyDown((VirtualKeyCode)kEvent.KeyCode);
+                        }
+                        else if(kEvent.type == KeyboardHook.KeyboardMessages.WM_KEYUP)
+                        {
+                            inputSim.Keyboard.KeyUp((VirtualKeyCode)kEvent.KeyCode);
+                        }
                     }
-                    else if (events is Delay)
+                    else if(events is Delay)
                     {
-                        Delay dEvent = (Delay)events;
-                        Thread.Sleep(dEvent.delayTimeSpan);
+                        Delay delay = (Delay)events;
+                        Thread.Sleep(delay.delayTimeSpan);
                     }
                 }
                 recordMacro.Enabled = true;
@@ -113,27 +121,46 @@ namespace UMacro
             }
         }
 
+        private void insertDelay(TimeSpan diff)
+        {
+            procedureList.Items.Add(new Delay(diff));
+        }
+
         private void mouseEvent(object sender, MouseHook.MouseHookEventArgs e)
         {
-            procedureList.Items.Add(e);
-            procedureList.Items.Add(new Delay(e.diff));
+            if (latestInvokedEventTime != null) {
+                TimeSpan diff = e.invokedTime.Subtract(latestInvokedEventTime);
+                if (diff.CompareTo(new TimeSpan(0, 0, 0, 0, Form1.getMouseRecordInterval())) >= 0)
+                {
+                    procedureList.Items.Add(e);
+                    insertDelay(diff.Subtract(new TimeSpan(0, 0, 0, 0, Form1.getMouseRecordInterval())));
+                }
+            }
+            latestInvokedEventTime = e.invokedTime;
         }
 
         private void keyboardEvent(object sender, KeyboardHook.KeyboardHookEventArgs e)
         {
             if (e.KeyCode != 119)
             {
-                procedureList.Items.Add(e);
-                procedureList.Items.Add(new Delay(e.diff));
+                if(latestInvokedEventTime != null) {
+                    TimeSpan diff = e.invokedTime.Subtract(latestInvokedEventTime);
+                    if (diff.CompareTo(new TimeSpan(0, 0, 0, 0, Form1.getKeyboardRecordInterval())) >= 0)
+                    {
+                        procedureList.Items.Add(e);
+                        insertDelay(diff.Subtract(new TimeSpan(0,0,0,0,Form1.getKeyboardRecordInterval())));
+                    }
+                }
+                latestInvokedEventTime = e.invokedTime;
             }
         }
 
         private void keyboardEventForForm(object sender, KeyboardHook.KeyboardHookEventArgs e)
         {
-            if (e.KeyCode == 119) {
+            if (e.KeyCode == 119 && e.type == KeyboardHook.KeyboardMessages.WM_KEYDOWN) {
                 toggleRecord();
             }
-            else if (e.KeyCode == 120) {
+            else if (e.KeyCode == 120 && e.type == KeyboardHook.KeyboardMessages.WM_KEYDOWN) {
                 playMacro();
             }
         }

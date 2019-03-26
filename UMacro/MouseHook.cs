@@ -13,7 +13,7 @@ namespace Hook
     {
         private static int hookHandle = 0;
         private static HookProc callBackDelegate;
-        private static MouseHookEventArgs latestEvent;
+        private static MouseHookEventArgs latestEvent = null;
 
         public static event EventHandler<MouseHookEventArgs> mouseEvent = delegate { };
 
@@ -116,7 +116,7 @@ namespace Hook
                 args.type = (MouseMessages)wParam;
                 args.invokedTime = DateTime.Now;
 
-                if(latestEvent == null) {
+                if (latestEvent == null) {
                     latestEvent = args;
                 }
 
@@ -124,6 +124,8 @@ namespace Hook
                     mouseInput.pos.y != latestEvent.Y ||
                     wParam != (IntPtr)MouseMessages.WM_MOUSEMOVE)
                 {
+                    // TODO: Make form1 process time-difference.
+                    /*
                     TimeSpan diff = args.invokedTime.Subtract(latestEvent.invokedTime);
                     if (diff.CompareTo(new TimeSpan(0,0,0,0,Form1.getMouseRecordInterval())) >= 0)
                     {
@@ -131,6 +133,8 @@ namespace Hook
                         mouseEvent(null, args);
                         latestEvent = args;
                     }
+                    */
+                    mouseEvent(null, args);
                 }
             }
             return CallNextHookEx(hookHandle, nCode, wParam, IParam);

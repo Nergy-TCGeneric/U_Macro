@@ -23,10 +23,14 @@ namespace Hook
             public KeyboardMessages type;
             public int KeyCode;
             public DateTime invokedTime;
-            public TimeSpan diff;
 
             public override string ToString() {
-                return "(키보드) " + KeyCode.ToString() + " 눌림";
+                string prefix = "(키보드) ";
+                if (type == KeyboardMessages.WM_KEYDOWN)
+                    return String.Format(prefix + "{0} 눌림", (Keys)KeyCode);
+                else if (type == KeyboardMessages.WM_KEYUP)
+                    return String.Format(prefix + "{0} 뗌", (Keys)KeyCode);
+                return base.ToString();
             }
         }
         
@@ -69,11 +73,14 @@ namespace Hook
                     args.type = KeyboardMessages.WM_KEYUP;
                 else if (wParam == (IntPtr)KeyboardMessages.WM_KEYDOWN)
                     args.type = KeyboardMessages.WM_KEYDOWN;
+                else 
+                    args.type = (KeyboardMessages)wParam;
 
                 if(latestEvent == null) {
                     latestEvent = args;
                 }
 
+                /*
                 TimeSpan diff = args.invokedTime.Subtract(latestEvent.invokedTime);
                 if (diff.CompareTo(new TimeSpan(0, 0, 0, 0, Form1.getKeyboardRecordInterval())) >= 0)
                 {
@@ -81,6 +88,9 @@ namespace Hook
                     keyboardEvent(null, args);
                     latestEvent = args;
                 }
+                */
+                keyboardEvent(null, args);
+                latestEvent = args;
             }
             return CallNextHookEx(hookHandle, nCode, wParam, IParam);
         }
