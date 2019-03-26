@@ -23,5 +23,12 @@ namespace Hook
         public static extern IntPtr GetModuleHandle(string lpModuleName);
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention =CallingConvention.StdCall)]
         public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+        /*
+        [DllImport("user32.dll")]
+        public static extern uint SendInput(
+            uint nInputs,
+            [MarshalAs(UnmanagedType.LPArray), In] INPUT[] pInputs,
+            int cbSize);
+            */
     }
 }

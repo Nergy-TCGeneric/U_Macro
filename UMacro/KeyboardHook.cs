@@ -23,6 +23,7 @@ namespace Hook
         {
             public int KeyCode;
             public DateTime invokedTime;
+            public TimeSpan diff;
 
             public override string ToString() {
                 return "(키보드) " + KeyCode.ToString() + " 눌림";
@@ -31,9 +32,9 @@ namespace Hook
 
         public static void startHook()
         {
-            if (callBackDelegate != null)
-                throw new InvalidOperationException("Hook has not been initalized properly!");
-            callBackDelegate = new HookProc(CallBack);
+            if (callBackDelegate == null)
+                callBackDelegate = new HookProc(CallBack);
+
             if (hookHandle != 0)
             {
                 return;
@@ -65,6 +66,7 @@ namespace Hook
                 TimeSpan diff = args.invokedTime.Subtract(latestEvent.invokedTime);
                 if (diff.CompareTo(new TimeSpan(0, 0, 0, 0, Form1.getKeyboardRecordInterval())) >= 0)
                 {
+                    args.diff = diff.Subtract(new TimeSpan(0, 0, 0, 0, Form1.getKeyboardRecordInterval()));
                     keyboardEvent(null, args);
                     latestEvent = args;
                 }

@@ -23,6 +23,7 @@ namespace Hook
             public int X;
             public int Y;
             public DateTime invokedTime;
+            public TimeSpan diff;
 
             public override string ToString()
             {
@@ -82,12 +83,17 @@ namespace Hook
 
         public static void startHook()
         {
+            /*
             if (callBackDelegate != null)
                 throw new InvalidOperationException("Hook has not been initalized properly!");
             callBackDelegate = new HookProc(CallBack);
-                if (hookHandle != 0) {
-                    return;
-                }
+            */
+            if (callBackDelegate == null)
+                callBackDelegate = new HookProc(CallBack);
+
+            if (hookHandle != 0) {
+                return;
+            }
             hookHandle = SetWindowsHookEx(WH_MOUSE_LL, callBackDelegate, IntPtr.Zero, 0);
             Console.WriteLine(hookHandle);
             }
@@ -119,9 +125,9 @@ namespace Hook
                     wParam != (IntPtr)MouseMessages.WM_MOUSEMOVE)
                 {
                     TimeSpan diff = args.invokedTime.Subtract(latestEvent.invokedTime);
-                    Console.WriteLine(diff);
                     if (diff.CompareTo(new TimeSpan(0,0,0,0,Form1.getMouseRecordInterval())) >= 0)
                     {
+                        args.diff = diff.Subtract(new TimeSpan(0, 0, 0, 0, Form1.getMouseRecordInterval()));
                         mouseEvent(null, args);
                         latestEvent = args;
                     }

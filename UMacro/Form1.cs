@@ -17,7 +17,6 @@ namespace UMacro
     public partial class Form1 : Form
     {
         private bool isRecording = false;
-        private DateTime prevEventTime = DateTime.Now;
         private static int mRecordIntv;
         private static int kRecordIntv;
         private static int pIntv;
@@ -32,6 +31,9 @@ namespace UMacro
             pIntv = getIntervalFromControls(playInterval.Text);
             mRecordIntv = getIntervalFromControls(mouseRecordInterval.Text);
             kRecordIntv = getIntervalFromControls(keyboardRecordInterval.Text);
+
+            KeyboardHook.startHook();
+            KeyboardHook.keyboardEvent += keyboardEventForForm;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,7 +53,6 @@ namespace UMacro
                 playBtn.Enabled = true;
                 recordMacro.Text = "기록 시작";
                 MouseHook.StopHook();
-                KeyboardHook.StopHook();
                 MouseHook.mouseEvent -= mouseEvent;
                 KeyboardHook.keyboardEvent -= keyboardEvent;
             }
@@ -63,7 +64,6 @@ namespace UMacro
                 procedureList.Items.Clear();
                 MouseHook.startHook();
                 MouseHook.mouseEvent += mouseEvent;
-                KeyboardHook.startHook();
                 KeyboardHook.keyboardEvent += keyboardEvent;
             }
         }
@@ -76,12 +76,12 @@ namespace UMacro
                 playInterval.Enabled = false;
 
                 // Doesn't look good. CLARIFY DATA TYPE IMMEDIATELY!
-                foreach (object eventArgs in procedureList.Items)
+                foreach (object events in procedureList.Items)
                 {
                     Thread.Sleep(pIntv);
-                    if (eventArgs is MouseHook.MouseHookEventArgs)
+                    if (events is MouseHook.MouseHookEventArgs)
                     {
-                        MouseHook.MouseHookEventArgs mEvent = (MouseHook.MouseHookEventArgs)eventArgs;
+                        MouseHook.MouseHookEventArgs mEvent = (MouseHook.MouseHookEventArgs)events;
                         Console.WriteLine(mEvent.type);
                         Cursor = new Cursor(Cursor.Current.Handle);
 
@@ -94,10 +94,15 @@ namespace UMacro
                             MouseHook.processClick(mEvent.type, mEvent.X, mEvent.Y);
                         }
                     }
-                    else if (eventArgs is KeyboardHook.KeyboardHookEventArgs)
+                    else if (events is KeyboardHook.KeyboardHookEventArgs)
                     {
-                        KeyboardHook.KeyboardHookEventArgs kEvent = (KeyboardHook.KeyboardHookEventArgs)eventArgs;
+                        KeyboardHook.KeyboardHookEventArgs kEvent = (KeyboardHook.KeyboardHookEventArgs)events;
                         Console.WriteLine((Keys)kEvent.KeyCode);
+                    }
+                    else if (events is Delay)
+                    {
+                        Delay dEvent = (Delay)events;
+                        Thread.Sleep(dEvent.delayTimeSpan);
                     }
                 }
                 recordMacro.Enabled = true;
@@ -108,11 +113,26 @@ namespace UMacro
         private void mouseEvent(object sender, MouseHook.MouseHookEventArgs e)
         {
             procedureList.Items.Add(e);
+            procedureList.Items.Add(new Delay(e.diff));
         }
 
         private void keyboardEvent(object sender, KeyboardHook.KeyboardHookEventArgs e)
         {
-            procedureList.Items.Add(e);
+            if (e.KeyCode != 119)
+            {
+                procedureList.Items.Add(e);
+                procedureList.Items.Add(new Delay(e.diff));
+            }
+        }
+
+        private void keyboardEventForForm(object sender, KeyboardHook.KeyboardHookEventArgs e)
+        {
+            if (e.KeyCode == 119) {
+                toggleRecord();
+            }
+            else if (e.KeyCode == 120) {
+                playMacro();
+            }
         }
 
         // TODO: Serialize into any type. XML or binary.. whatever is ok.
@@ -146,19 +166,6 @@ namespace UMacro
 
         private void playBtn_Click(object sender, EventArgs e) {
             playMacro();
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            Console.WriteLine("Pressed Keyboard: " + e.KeyCode);
-            Console.WriteLine("Pressed Keyboard raw: " + e.KeyValue);
-            // F8 for 119, F9 for 120
-            if(e.KeyValue == 119) {
-                toggleRecord();
-            }
-            else if(e.KeyValue == 120) {
-                playMacro();
-            }
         }
 
         private int getIntervalFromControls(String ctrText)
